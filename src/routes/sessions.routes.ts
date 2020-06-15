@@ -5,12 +5,7 @@ import AuthenticateUserService from '../services/AuthenticateUserService';
 const sessionsRouter = Router();
 
 interface NoPasswordUser {
-  id: string;
-  name: string;
-  email: string;
   password?: string;
-  created_at: Date;
-  updated_at: Date;
 }
 
 sessionsRouter.post('/', async (req, res) => {
@@ -18,13 +13,16 @@ sessionsRouter.post('/', async (req, res) => {
 
   const authenticateUser = new AuthenticateUserService();
 
-  const { user, token } = await authenticateUser.execute({ email, password });
+  const { user: responseUser, token } = await authenticateUser.execute({
+    email,
+    password,
+  });
 
-  const responseUser: NoPasswordUser = { ...user };
+  const user: NoPasswordUser = { ...responseUser };
 
-  delete responseUser.password;
+  delete user.password;
 
-  return res.json({ responseUser, token });
+  return res.json({ user, token });
 });
 
 export default sessionsRouter;

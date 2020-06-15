@@ -10,10 +10,7 @@ const usersRouter = Router();
 const upload = multer(uploadConfig);
 
 interface NoPasswordUser {
-  name: string;
-  email: string;
   password?: string;
-  avatar: string;
 }
 
 usersRouter.post('/', async (req, res) => {
