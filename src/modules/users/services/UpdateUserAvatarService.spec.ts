@@ -1,10 +1,7 @@
 import FakeStorageProvider from '@shared/providers/StorageProvider/fakes/FakeStorageProvider';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 
-import DiskStorageProvider from '@shared/providers/StorageProvider/implementations/DiskStorageProvider';
-
 import UpdateUserAvatarService from '@modules/users/services/UpdateUserAvatarService';
-import CreateUserService from '@modules/users/services/CreateUserService';
 
 import AppError from '@shared/errors/AppError';
 
