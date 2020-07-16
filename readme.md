@@ -4,7 +4,7 @@
 
 **Requisitos funcionais**
 
-- [ ] O usuário deve poder recuperar sua senha informando o e-mail;
+- [x] O usuário deve poder recuperar sua senha informando o e-mail;
 
 - [ ] O usuário deve receber um e-mail instruindo a recuperação de senha;
 
