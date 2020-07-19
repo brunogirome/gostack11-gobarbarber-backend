@@ -5,7 +5,7 @@ import AppError from '@shared/errors/AppError';
 import User from '@modules/users/infra/typeorm/entities/User';
 
 import IStorageProvider from '@shared/container/providers/StorageProvider/models/IStorageProvider';
-import IUserRepositry from '../repositories/IUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   user_id: string;
@@ -15,8 +15,8 @@ interface IRequest {
 @injectable()
 class UpdateUserAvatarService {
   constructor(
-    @inject('UsersRespotiory')
-    private usersRepository: IUserRepositry,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
 
     @inject('StorageProvider')
     private storageProvider: IStorageProvider,

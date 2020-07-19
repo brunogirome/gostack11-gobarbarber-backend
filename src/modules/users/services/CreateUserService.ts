@@ -5,7 +5,7 @@ import AppError from '@shared/errors/AppError';
 
 import User from '@modules/users/infra/typeorm/entities/User';
 
-import IUserRepositry from '../repositories/IUsersRepository';
+import IUserRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   name: string;
@@ -16,8 +16,8 @@ interface IRequest {
 @injectable()
 class CreateUserService {
   constructor(
-    @inject('UsersRespotiory')
-    private usersRepository: IUserRepositry,
+    @inject('UsersRepository')
+    private usersRepository: IUserRepository,
 
     @inject('HashProvider')
     private hashProvider: IHashProvider,

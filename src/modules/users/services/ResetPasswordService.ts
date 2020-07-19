@@ -3,10 +3,8 @@ import { isAfter, addHours } from 'date-fns';
 
 import AppError from '@shared/errors/AppError';
 
-// import User from '@modules/users/infra/typeorm/entities/User';
-
 import IUserTokensRepositry from '@modules/users/repositories/IUserTokenRepository';
-import IUsersRepositry from '../repositories/IUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
@@ -17,8 +15,8 @@ interface IRequest {
 @injectable()
 class ResetPasswordService {
   constructor(
-    @inject('UsersRespotiory')
-    private usersRepository: IUsersRepositry,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
 
     @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepositry,
