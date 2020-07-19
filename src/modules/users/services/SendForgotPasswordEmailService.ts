@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import path from 'path';
 
 import AppError from '@shared/errors/AppError';
 
@@ -16,11 +17,11 @@ class SendForgotPasswordEmailService {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
-    @inject('MailProvider')
-    private mailProvider: IMailProvider,
-
     @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepositry,
+
+    @inject('MailProvider')
+    private mailProvider: IMailProvider,
   ) {}
 
   public async execute({ email }: IRequest): Promise<void> {
@@ -32,6 +33,13 @@ class SendForgotPasswordEmailService {
 
     const { token } = await this.userTokensRepository.generate(user.id);
 
+    const forgortPasswordTemplate = path.resolve(
+      __dirname,
+      '..',
+      'views',
+      'forgot_password.hbs',
+    );
+
     await this.mailProvider.sendMail({
       to: {
         name: user.name,
@@ -39,10 +47,10 @@ class SendForgotPasswordEmailService {
       },
       subject: '[GoBarber] Password Recovery',
       templateData: {
-        template: 'Hello, {{name}}: {{token}}',
+        fileLocation: forgortPasswordTemplate,
         variables: {
           name: user.name,
-          token,
+          link: `http://localhost:3000/reset_password?token=${token}`,
         },
       },
     });
