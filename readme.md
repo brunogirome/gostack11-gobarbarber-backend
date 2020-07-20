@@ -22,13 +22,13 @@
 
 - [x] O Link de recuperação de senha enviado por e-mail deve expirar em 2 horas;
 
-- [ ] O usuário precisa confirmar a nova senha ao restar
+- [x] O usuário precisa confirmar a nova senha ao restar;
 
 ## User Update
 
 **Requisitos funcionais**
 
-- [ ] O usuário deve poder atualizar seus dados (nome, email e senha);
+- [x] O usuário deve poder atualizar seus dados (nome, email e senha);
 
 **Requisitos não funcionais**
 
@@ -36,11 +36,11 @@
 
 **Regras de negócio**
 
-- [ ] O usuário não pode alterar seu e-mail para um e-mail já utilizado;
+- [x] O usuário não pode alterar seu e-mail para um e-mail já utilizado;
 
-- [ ] Para atualizar sua senha, o usuário deve informar a senha antiga;
+- [x] Para atualizar sua senha, o usuário deve informar a senha antiga;
 
-- [ ] Para atualizar a senha, o usuário deve confirmar a senha antiga;
+- [x] Para atualizar a senha, o usuário deve confirmar a senha antiga;
 
 ## Proivider dashboard
 

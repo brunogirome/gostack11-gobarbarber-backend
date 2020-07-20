@@ -1,7 +1,5 @@
 import { injectable, inject } from 'tsyringe';
 
-// import AppError from '@shared/errors/AppError';
-
 import User from '@modules/users/infra/typeorm/entities/User';
 
 import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
@@ -17,13 +15,13 @@ interface IRequest {
 }
 
 @injectable()
-class UpdateUserProfileService {
+class UpdateProfileService {
   constructor(
-    @inject('UsersRepository')
-    private usersRepository: IUsersRepository,
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
 
     @inject('UsersRepository')
-    private hashProvider: IHashProvider,
+    private usersRepository: IUsersRepository,
   ) {}
 
   public async execute({
@@ -54,8 +52,8 @@ class UpdateUserProfileService {
 
     if (password && old_password) {
       const checkOldPassword = await this.hashProvider.compareHash(
-        user.password,
         old_password,
+        user.password,
       );
 
       if (!checkOldPassword) {
@@ -69,4 +67,4 @@ class UpdateUserProfileService {
   }
 }
 
-export default UpdateUserProfileService;
+export default UpdateProfileService;
