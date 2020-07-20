@@ -1,12 +1,11 @@
 import { injectable, inject } from 'tsyringe';
+import path from 'path';
 
 import AppError from '@shared/errors/AppError';
 
-// import User from '@modules/users/infra/typeorm/entities/User';
-
 import IMailProvider from '@shared/container/providers/MailProvider/models/IMailProvider';
 import IUserTokensRepositry from '@modules/users/repositories/IUserTokenRepository';
-import IUsersRepositry from '../repositories/IUsersRepository';
+import IUsersRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   email: string;
@@ -15,17 +14,16 @@ interface IRequest {
 @injectable()
 class SendForgotPasswordEmailService {
   constructor(
-    @inject('UsersRespotiory')
-    private usersRepository: IUsersRepositry,
-
-    @inject('MailProvider')
-    private mailProvider: IMailProvider,
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
 
     @inject('UserTokensRepository')
     private userTokensRepository: IUserTokensRepositry,
+
+    @inject('MailProvider')
+    private mailProvider: IMailProvider,
   ) {}
 
-  // public async execute({ email }: IRequest): Promise<void> {}
   public async execute({ email }: IRequest): Promise<void> {
     const user = await this.usersRepository.findByEmail(email);
 
@@ -33,9 +31,29 @@ class SendForgotPasswordEmailService {
       throw new AppError('User does not exists', 400);
     }
 
-    await this.userTokensRepository.generate(user.id);
+    const { token } = await this.userTokensRepository.generate(user.id);
 
-    this.mailProvider.sendMail(email, 'Password recovery request');
+    const forgortPasswordTemplate = path.resolve(
+      __dirname,
+      '..',
+      'views',
+      'forgot_password.hbs',
+    );
+
+    await this.mailProvider.sendMail({
+      to: {
+        name: user.name,
+        email: user.email,
+      },
+      subject: '[GoBarber] Password Recovery',
+      templateData: {
+        fileLocation: forgortPasswordTemplate,
+        variables: {
+          name: user.name,
+          link: `http://localhost:3000/reset_password?token=${token}`,
+        },
+      },
+    });
   }
 }
 

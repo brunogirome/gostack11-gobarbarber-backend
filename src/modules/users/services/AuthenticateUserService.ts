@@ -8,7 +8,7 @@ import User from '@modules/users/infra/typeorm/entities/User';
 
 import authConfig from '@config/auth';
 
-import IUserRepositry from '../repositories/IUsersRepository';
+import IUserRepository from '../repositories/IUsersRepository';
 
 interface IRequest {
   email: string;
@@ -23,8 +23,8 @@ interface IResponse {
 @injectable()
 class AuthenticateUserService {
   constructor(
-    @inject('UsersRespotiory')
-    private usersRepository: IUserRepositry,
+    @inject('UsersRepository')
+    private usersRepository: IUserRepository,
 
     @inject('HashProvider')
     private hashProvider: IHashProvider,
