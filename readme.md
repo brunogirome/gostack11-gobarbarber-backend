@@ -6,13 +6,13 @@
 
 - [x] O usuário deve poder recuperar sua senha informando o e-mail;
 
-- [ ] O usuário deve receber um e-mail instruindo a recuperação de senha;
+- [x] O usuário deve receber um e-mail instruindo a recuperação de senha;
 
-- [ ] O usuário deve poder resetar sua senha;
+- [x] O usuário deve poder resetar sua senha;
 
 **Requisitos não funcionais**
 
-- [ ] Utilizar o `mailtrap` para testar envio de e-mail no ambiente de desenvolvimento;
+- [x] Utilizar o `Etherial` para testar envio de e-mail no ambiente de desenvolvimento;
 
 - [ ] Utilizar o `Amazon SES` para envio em produção;
 
@@ -20,7 +20,7 @@
 
 **Regras de negócio**
 
-- [ ] O Link de recuperação de senha enviado por e-mail deve expirar em 2 horas;
+- [x] O Link de recuperação de senha enviado por e-mail deve expirar em 2 horas;
 
 - [ ] O usuário precisa confirmar a nova senha ao restar
 
