@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 
-import '@modules/users/providers';
 import '@shared/container/providers';
+import '@modules/users/providers';
 
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
@@ -13,7 +13,7 @@ import IUserTokensRepository from '@modules/users/repositories/IUserTokenReposit
 import UserTokensRepository from '@modules/users/infra/typeorm/repositories/UserTokensRepository';
 
 container.registerSingleton<IAppointmentsRepository>(
-  'AppointmentRepository',
+  'AppointmentsRepository',
   AppointmentsRepository,
 );
 
