@@ -82,11 +82,11 @@
 
 **Regras de negócio**
 
-- [ ] Cada agendamento deve durar 1h exatamente;
+- [x] Cada agendamento deve durar 1h exatamente;
 
 - [ ] Os agendamentos devem estar disponíveis entre as 8h às 18h (primeiro às 8h, último às 17h);
 
-- [ ] O usuário não pode agendar em um horário já oucupado;
+- [x] O usuário não pode agendar em um horário já oucupado;
 
 - [ ] O usuário não pode agendar no passado;
 
