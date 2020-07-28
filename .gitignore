@@ -2,5 +2,14 @@ node_modules/
 .vscode/
 yarn.error.log
 
+.idea/
+.vscode/
+coverage/
+
+temp/
+.env
+ormconfig.json
+build/
+
 tmp/*
 !tmp/.gitkeep
