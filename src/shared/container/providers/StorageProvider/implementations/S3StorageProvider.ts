@@ -4,8 +4,8 @@ import aws, { S3 } from 'aws-sdk';
 import mime from 'mime';
 import uploadConfig from '@config/upload';
 
+import AppError from '@shared/errors/AppError';
 import IStorageProvider from '../models/IStorageProvider';
-import AppError from '../../../../errors/AppError';
 
 class S3StorageProvider implements IStorageProvider {
   private client: S3;
