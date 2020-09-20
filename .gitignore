@@ -8,7 +8,6 @@ coverage/
 
 temp/
 .env
-ormconfig.json
 build/
 
 tmp/*
